@@ -2,7 +2,7 @@
 int main(){
 	
 	int num[30];
-	int i,n;
+	int i,n,j;
 	int option;
 	do{
 		printf("========== ||| MENU ||| ==========\n");
@@ -67,8 +67,56 @@ int main(){
 					printf("Update not Success\n");
 				}
 				else{
-					printf("Update Success\n")
+					printf("Update Success\n");
 				}
+				break;
+			}
+			case 5:{
+				int deleted;
+				int check = 0;
+				printf("======= Delete ========\n");
+				printf("Enter Number to delete: ");scanf("%d",&deleted);
+				for(i=0;i<n;i++){
+					if(deleted == num[i]){
+						for(j=i;j<n-1;j++){
+							num[j] = num[j+1];
+						}
+						check = 1;
+						n--;
+						break;
+					}
+				}
+				if(check == 0){
+					printf("Delete not Success\n");
+				}
+				else{
+					printf("Delete Success\n");
+				}
+				break;
+			}
+			case 6:{
+				int temp;
+				printf("======= SORT ========\n");
+				for(i=0;i<n;i++){
+					for(j=i;j<n;j++){
+						if(num[i]>num[j]){
+							temp = num[i];
+							num[i] = num[j];
+							num[j] = temp;
+						}
+					}
+				}
+				printf("Sort Success\n");
+				break;
+			}
+			case 7:{
+				int add;
+				printf("How many number to add: ");scanf("%d",&add);//2
+				for(i=n;i<n+add;i++){
+					printf("Enter Number[%d] = ",i);scanf("%d",&num[i]);
+				}
+				n=n+add;
+				printf("Add Success");
 				break;
 			}
 		}
